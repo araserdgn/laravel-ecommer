@@ -26,6 +26,7 @@ Route::get('/erkek-giyim', [PageController::class, 'urunler'])->name('erkekurunl
 Route::get('/kadin-giyim', [PageController::class, 'urunler'])->name('kadinurunler');
 Route::get('/cocuk-giyim', [PageController::class, 'urunler'])->name('cocukurunler');
 Route::get('/urun/detay', [PageController::class, 'urunDetay'])->name('urunDetay');
+Route::get('/indirimler',[PageController::class, 'indirimurunler'])->name('indirimurunler');
 
 Route::get('/hakkimizda', [PageController::class, 'hakkimizda'])->name('hakkimizda');
 

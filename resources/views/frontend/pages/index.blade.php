@@ -56,7 +56,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-            <a class="block-2-item" href="{{route(kadinurunler)}}">
+            <a class="block-2-item" href="{{route('kadinurunler')}}">
               <figure class="image">
                 <img src="images/women.jpg" alt="" class="img-fluid">
               </figure>
@@ -67,7 +67,7 @@
             </a>
           </div>
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-            <a class="block-2-item" href="{{route(cocukurunler)}}">
+            <a class="block-2-item" href="{{route('cocukurunler')}}">
               <figure class="image">
                 <img src="images/children.jpg" alt="" class="img-fluid">
               </figure>
@@ -78,7 +78,7 @@
             </a>
           </div>
           <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-            <a class="block-2-item" href="{{route(erkekurunler)}}">
+            <a class="block-2-item" href="{{route('erkekurunler')}}">
               <figure class="image">
                 <img src="images/men.jpg" alt="" class="img-fluid">
               </figure>
@@ -96,7 +96,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Featured Products</h2>
+            <h2>Yeni Gelen Ürünler</h2>
           </div>
         </div>
         <div class="row">
@@ -172,7 +172,7 @@
       <div class="container">
         <div class="row justify-content-center  mb-5">
           <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Big Sale!</h2>
+            <h2>Kampanyalar</h2>
           </div>
         </div>
         <div class="row align-items-center">
@@ -180,10 +180,9 @@
             <a href="#"><img src="images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded"></a>
           </div>
           <div class="col-md-12 col-lg-5 text-center pl-md-5">
-            <h2><a href="#">50% less in all items</a></h2>
-            <p class="post-meta mb-4">By <a href="#">Carl Smith</a> <span class="block-8-sep">&bullet;</span> September 3, 2018</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam iste dolor accusantium facere corporis ipsum animi deleniti fugiat. Ex, veniam?</p>
-            <p><a href="#" class="btn btn-primary btn-sm">Shop Now</a></p>
+            <h2>Ürünlerimizde Çılgınca %50 İndirim</h2>
+            <p>İndirimdeki ürünleri sakın ama sakın kaçırma!</p>
+            <p><a href="{{route('indirimurunler')}}" class="btn btn-primary btn-sm">İndirimli Ürünler</a></p>
           </div>
         </div>
       </div>

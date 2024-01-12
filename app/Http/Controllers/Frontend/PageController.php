@@ -11,6 +11,10 @@ class PageController extends Controller
         return view('frontend.pages.products');
     }
 
+    public function indirimurunler() {
+        return view('frontend.pages.products');
+    }
+
     public function urunDetay() {
         return view('frontend.pages.product');
     }
@@ -26,4 +30,5 @@ class PageController extends Controller
     public function basket() {
         return view('frontend.pages.basket');
     }
+
 }
