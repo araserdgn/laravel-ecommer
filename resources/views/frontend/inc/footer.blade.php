@@ -23,9 +23,9 @@
                 <div class="block-5 mb-5">
                     <h3 class="footer-heading mb-4">İletişim Bilgileri</h3>
                     <ul class="list-unstyled">
-                        <li class="address">Atatürk Bulvarı, Kızılay/Ankara</li>
-                        <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                        <li class="email">deneme@domain.com</li>
+                        <li class="address">{{ $settings['adres'] }}</li>
+                        <li class="phone"><a href="tel://{{str_replace(' ','',$settings['phone'])}}">{{ $settings['phone'] }}</a></li>
+                        <li class="email">{{ $settings['email'] }}</li>
                     </ul>
                 </div>
 
