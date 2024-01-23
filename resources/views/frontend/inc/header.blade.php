@@ -43,12 +43,27 @@
                 <li class="has-children">
                     <a href="#">Kategoriler</a>
                     <ul class="dropdown">
-                        @if (!@empty($categories) && $categories->count() > 0)
-                            @foreach($categories as $category)
-                                <li><a href="#">{{$category->name}}</a></li>
-                            @endforeach
+
+                        @if (!empty($categories) && $categories->count() >0)
+                        @foreach ($categories as $category)
+                            @if ($category->cat_ust == null)
+                                <li class="has-children">
+                                    <a href="#">{{ $category->name }}</a>
+                                    <ul class="dropdown">
+                                        @foreach ($categories as $subCategory)
+                                            @if ($subCategory->cat_ust == $category->id)
+                                                <li><a href="#">{{ $subCategory->name }}</a></li>
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                </li>
+
+                            @endif
+
+                        @endforeach
 
                         @endif
+
                     </ul>
                 </li>
                 <li>
