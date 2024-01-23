@@ -1,146 +1,78 @@
 @extends('frontend.layout.layout')
 
 @section('content')
-
-
     <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="{{route('anasayfa')}}">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">About</strong></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0"><a href="{{ route('anasayfa') }}">Home</a> <span class="mx-2 mb-0">/</span> <strong
+                        class="text-black">Contact</strong></div>
+            </div>
         </div>
-      </div>
     </div>
 
-    <div class="site-section border-bottom" data-aos="fade">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-6">
-            <div class="block-16">
-              <figure>
-                <img src="images/blog_1.jpg" alt="Image placeholder" class="img-fluid rounded">
-                <a href="https://vimeo.com/channels/staffpicks/93951774" class="play-button popup-vimeo"><span class="ion-md-play"></span></a>
-
-              </figure>
-            </div>
-          </div>
-          <div class="col-md-1"></div>
-          <div class="col-md-5">
-
-
-            <div class="site-section-heading pt-3 mb-4">
-              <h2 class="text-black">How We Started</h2>
-            </div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius repellat, dicta at laboriosam, nemo exercitationem itaque eveniet architecto cumque, deleniti commodi molestias repellendus quos sequi hic fugiat asperiores illum. Atque, in, fuga excepturi corrupti error corporis aliquam unde nostrum quas.</p>
-            <p>Accusantium dolor ratione maiores est deleniti nihil? Dignissimos est, sunt nulla illum autem in, quibusdam cumque recusandae, laudantium minima repellendus.</p>
-
-          </div>
+    @if (session()->has('success'))
+        <div class="alert alert-success text-center">
+            {{session()->get('success')}}
         </div>
-      </div>
-    </div>
+    @endif
 
-    <div class="site-section border-bottom" data-aos="fade">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>The Team</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-3">
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="h3 mb-3 text-black">Get In Touch</h2>
+                </div>
+                <div class="col-md-7">
 
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <img src="images/person_1.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Elizabeth Graham</h3>
-                  <p class="block-38-subheading">CEO/Co-Founder</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <img src="images/person_2.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Jennifer Greive</h3>
-                  <p class="block-38-subheading">Co-Founder</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <img src="images/person_3.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Patrick Marx</h3>
-                  <p class="block-38-subheading">Marketing</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="block-38 text-center">
-              <div class="block-38-img">
-                <div class="block-38-header">
-                  <img src="images/person_4.jpg" alt="Image placeholder" class="mb-4">
-                  <h3 class="block-38-heading h4">Mike Coolbert</h3>
-                  <p class="block-38-subheading">Sales Manager</p>
-                </div>
-                <div class="block-38-body">
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                    <form action="{{route('iletisim.kaydet')}}" method="post">
+                        @csrf
+                        <div class="p-3 p-lg-5 border">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="c_fname" class="text-black">Ad Soyad <span
+                                            class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="c_fname" name="name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="c_email" class="text-black">Email <span
+                                            class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="c_email" name="email" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="c_subject" class="text-black">Konu </label>
+                                    <input type="text" class="form-control" id="c_subject" name="subject">
+                                </div>
+                            </div>
 
-
-    <div class="site-section site-section-sm site-blocks-1 border-0" data-aos="fade">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="">
-            <div class="icon mr-4 align-self-start">
-              <span class="icon-truck"></span>
-            </div>
-            <div class="text">
-              <h2 class="text-uppercase">Free Shipping</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon mr-4 align-self-start">
-              <span class="icon-refresh2"></span>
-            </div>
-            <div class="text">
-              <h2 class="text-uppercase">Free Returns</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 d-lg-flex mb-4 mb-lg-0 pl-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon mr-4 align-self-start">
-              <span class="icon-help"></span>
-            </div>
-            <div class="text">
-              <h2 class="text-uppercase">Customer Support</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-@endsection
-
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="c_message" class="text-black">Mesajınız </label>
+                                    <textarea name="message" id="c_message" cols="30" rows="7" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Send Message">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-5 ml-auto">
+                    <div class="p-4 border mb-3">
+                        <span class="d-block text-primary h6 text-uppercase">New York</span>
+                        <p class="mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
+                    </div>
+                    <div class="p-4 border mb-3">
+                        <span class="d-block text-primary h6 text-uppercase">London</span>
+                        <p class="mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
+                    </div>
+                    <div class="p-4 border mb-3">
+                        <span class="d-block text-primary h6 text-uppercase">Canada</span>
+                        <p class="mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
+                    </div>
+                @endsection

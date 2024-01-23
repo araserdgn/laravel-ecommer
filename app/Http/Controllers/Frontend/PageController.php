@@ -29,6 +29,10 @@ class PageController extends Controller
         return view('frontend.pages.contact');
     }
 
+    public function iletisimkaydet() {
+        return view('frontend.pages.contact');
+    }
+
     public function basket() {
         return view('frontend.pages.basket');
     }
