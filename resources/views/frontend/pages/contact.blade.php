@@ -16,11 +16,19 @@
         </div>
     @endif
 
+    @if (count($errors))
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger text-center">
+                {{$error}}
+            </div>
+        @endforeach
+    @endif
+
     <div class="site-section">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="h3 mb-3 text-black">Get In Touch</h2>
+                    <h2 class="h3 mb-3 text-black">İLETİSİM</h2>
                 </div>
                 <div class="col-md-7">
 
@@ -64,15 +72,8 @@
                 </div>
                 <div class="col-md-5 ml-auto">
                     <div class="p-4 border mb-3">
-                        <span class="d-block text-primary h6 text-uppercase">New York</span>
-                        <p class="mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
+                        <span class="d-block text-primary h6 text-uppercase">ADRES</span>
+                        <p class="mb-0">{{ $settings['adres'] }}</p>
                     </div>
-                    <div class="p-4 border mb-3">
-                        <span class="d-block text-primary h6 text-uppercase">London</span>
-                        <p class="mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
-                    </div>
-                    <div class="p-4 border mb-3">
-                        <span class="d-block text-primary h6 text-uppercase">Canada</span>
-                        <p class="mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
-                    </div>
+
                 @endsection
