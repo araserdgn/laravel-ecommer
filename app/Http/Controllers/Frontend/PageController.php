@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class PageController extends Controller
 
         // $size = $request->size ?? null;
 
-        $products = Product::where('status','1')
+        $products = Product::where('status','1')->select('id','name','slug','size','color','price','category_id','image')
         ->where(function($q) use($size, $color,$startprice,$endprice){
             if(!empty($size)) {
                 $q->where('size',$size);
@@ -46,9 +47,21 @@ class PageController extends Controller
                 $q->whereBetween('price',[$startprice,$endprice]);
             }
             return $q;
-        })
-        ->paginate(1); // get alırsak direkt json olarak alır verileri
-        return view('frontend.pages.products',compact('products'));
+        })->with('category:id,name,slug');
+
+        $minprice = $products->min('price');
+        $maxprice = $products->max('price');
+
+
+
+        $sizelist = Product::where('status','1')->groupBy('size')->pluck('size')->toArray();
+        $colors = Product::where('status','1')->groupBy('color')->pluck('color')->toArray();
+
+
+        $products = $products->paginate(1); // get alırsak direkt json olarak alır verileri
+
+        $categories=Category::where('status','1')->where('cat_ust',null)->withCount('items')->get();
+        return view('frontend.pages.products',compact('products','categories','minprice','maxprice','sizelist','colors'));
     }
 
     public function indirimurunler() {

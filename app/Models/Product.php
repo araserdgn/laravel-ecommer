@@ -24,7 +24,12 @@ class Product extends Model
         'status',
         'content'
     ];
+    //! fillable => çoklu verileri tek seferde göndermek için kullanılır
 
+    public function category() {
+        return $this->hasOne(Category::class,'id','category_id');
+        // Category model içindeki İD 'yi , Product model içindeyz bu içerdeki fillable içindeki category_id bagladk
+    }
     public function sluggable(): array
     {
         return [

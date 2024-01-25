@@ -10,6 +10,7 @@ class Category extends Model
 {
     use Sluggable;
     protected $fillable = [ // $fillable => model içinde yazan kısımlara izin ver demek.
+                            // toplu veri eklemek için kullanılır
         'image',
         'thumbnail',
         'name',
@@ -18,6 +19,11 @@ class Category extends Model
         'cat_ust',
         'status',
     ];
+
+    public function items() {
+        return $this->hasMany(Product::class, 'category_id','id');
+        // ($related, $foreignKey = null, $localKey = null) bu HASMANY yapısı
+    }
 
     public function sluggable(): array
     {
