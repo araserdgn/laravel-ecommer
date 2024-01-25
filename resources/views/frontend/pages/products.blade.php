@@ -78,7 +78,8 @@
                     </div>
 
                     <div class="row" data-aos="fade-up">
-                        {{$products->links('vendor.pagination.custom')}}
+                        {{$products->withQueryString()->links('vendor.pagination.custom')}}
+                        {{--! withQueryString()=> Url'den sql sorgu yaaprken kullanılır --}}
                         {{-- <div class="col-md-12 text-center">
                             <div class="site-block-27">
                                 <ul>

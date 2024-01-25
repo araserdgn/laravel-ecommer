@@ -9,8 +9,45 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function urunler() {
-        $products = Product::where('status','1')->paginate(1); // get alırsak direkt json olarak alır verileri
+    public function urunler(Request $request) {
+
+        if(!empty($request->size)) {
+            $size = $request->size;
+        }
+        else {
+            $size = null;
+        }
+
+
+        if(!empty($request->color)) {
+            $color = $request->color;
+        }
+        else {
+            $color = null;
+        }
+
+
+        $startprice= $request->start_price ?? null;
+        $endprice= $request->end_price ?? null;
+
+        // $size = $request->size ?? null;
+
+        $products = Product::where('status','1')
+        ->where(function($q) use($size, $color,$startprice,$endprice){
+            if(!empty($size)) {
+                $q->where('size',$size);
+            }
+
+            if(!empty($color)) {
+                $q->where('color',$color);
+            }
+
+            if(!empty($startprice) && $endprice) {
+                $q->whereBetween('price',[$startprice,$endprice]);
+            }
+            return $q;
+        })
+        ->paginate(1); // get alırsak direkt json olarak alır verileri
         return view('frontend.pages.products',compact('products'));
     }
 
