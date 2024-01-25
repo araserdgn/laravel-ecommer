@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
     public function urunler() {
-        $products = Product::where('status','1')->get();
+        $products = Product::where('status','1')->paginate(1); // get alırsak direkt json olarak alır verileri
         return view('frontend.pages.products',compact('products'));
     }
 
@@ -18,8 +18,9 @@ class PageController extends Controller
         return view('frontend.pages.products');
     }
 
-    public function urunDetay() {
-        return view('frontend.pages.product');
+    public function urunDetay($slug) {
+        $product = Product::where('slug',$slug)->first();
+        return view('frontend.pages.product',compact('product'));
     }
 
     public function hakkimizda() {
