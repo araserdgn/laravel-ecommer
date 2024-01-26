@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function urunler(Request $request) {
+    public function urunler(Request $request, $slug=null) {
+
+        $category= $request->segment(1) ?? null;
 
         if(!empty($request->size)) {
             $size = $request->size;
@@ -51,7 +53,15 @@ class PageController extends Controller
                 $q->whereBetween('price',[$startprice,$endprice]);
             }
             return $q;
-        })->with('category:id,name,slug');
+        })->with('category:id,name,slug')
+        ->whereHas('category', function($query) use($category,$slug) {
+            if(!empty($slug)) {
+                $query->where('slug',$slug);
+            }
+            return $query;
+        });
+
+        //! Where direkt tablodan sorgu ike whereHas ise ilişkili tablodan sorgu demek
 
         $minprice = $products->min('price');
         $maxprice = $products->max('price');
@@ -64,8 +74,8 @@ class PageController extends Controller
 
         $products = $products->orderBy($order,$short)->paginate(10); // get alırsak direkt json olarak alır verileri
 
-        $categories=Category::where('status','1')->where('cat_ust',null)->withCount('items')->get();
-        return view('frontend.pages.products',compact('products','categories','minprice','maxprice','sizelist','colors'));
+
+        return view('frontend.pages.products',compact('products','minprice','maxprice','sizelist','colors'));
     }
 
     public function indirimurunler() {
@@ -73,8 +83,17 @@ class PageController extends Controller
     }
 
     public function urunDetay($slug) {
-        $product = Product::where('slug',$slug)->first();
-        return view('frontend.pages.product',compact('product'));
+        $product = Product::where('slug',$slug)->where('status','1')->firstOrFail();
+        // firstOrFail =Z eger slug yok ise hata ver demektir
+
+        $products = Product::where('id','!=',$product->id)
+        ->where('category_id',$product->category_id)
+        ->where('status','1')
+        ->limit(6)
+        ->get();
+
+        // Hangi ürün detay sayfasında isem o hariç diger aynı aktegoride olanları göstermesini sagladım diger ürünler kısmında
+        return view('frontend.pages.product',compact('product','products'));
     }
 
     public function hakkimizda() {

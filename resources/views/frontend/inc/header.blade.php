@@ -45,22 +45,20 @@
                     <ul class="dropdown">
 
                         @if (!empty($categories) && $categories->count() >0)
-                        @foreach ($categories as $category)
-                            @if ($category->cat_ust == null)
-                                <li class="has-children">
-                                    <a href="{{route($category->slug.'urunler')}}">{{ $category->name }}</a>
-                                    <ul class="dropdown">
-                                        @foreach ($categories as $subCategory)
-                                            @if ($subCategory->cat_ust == $category->id)
-                                                <li><a href="{{route($category->slug.'urunler',$subCategory->slug)}}">{{ $subCategory->name }}</a></li>
-                                            @endif
-                                        @endforeach
-                                    </ul>
-                                </li>
+                            @foreach ($categories->where('cat_ust',null) as $category)
 
-                            @endif
+                                    <li class="has-children">
+                                        <a href="{{route($category->slug.'urunler')}}">{{ $category->name }}</a>
+                                        <ul class="dropdown">
+                                            @foreach ($category->subcategory as $subCategory)
+                                                    <li><a href="{{route($category->slug.'urunler',$subCategory->slug)}}">{{ $subCategory->name }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
 
-                        @endforeach
+
+
+                            @endforeach
 
                         @endif
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Category;
 use App\Models\SiteSetting;
 use Closure;
 use Illuminate\Http\Request;
@@ -18,7 +19,10 @@ class SiteSettingMiddleware
     {
         $settings = SiteSetting::pluck('data','name')->toArray();
         //! pluck => sutunları key-value seklinde ayırma saglar. key value ters yaz ama key'i value yerine value'i key yerine
-        view()->share(['settings'=>$settings]);
+
+        $categories=Category::where('status','1')->with('subcategory')->withCount('items')->get();
+
+        view()->share(['settings'=>$settings,'categories'=>$categories]);
         // view , göster ve share ile paylaş. Yani bladeler ile yaplas komutudur
         return $next($request);
     }

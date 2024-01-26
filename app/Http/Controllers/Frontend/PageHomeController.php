@@ -17,9 +17,8 @@ class PageHomeController extends Controller
         $title="Anasayfa";
 
         $category = Category::where('cat_ust',null)->get();
-        $categories=Category::where('status','1')->get();
 
         $about = About::where('id',1)->first();
-        return view('frontend.pages.index',compact('slider','title','categories','about','category'));
+        return view('frontend.pages.index',compact('slider','title','about','category'));
     }
 }

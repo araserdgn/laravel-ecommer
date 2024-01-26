@@ -25,6 +25,10 @@ class Category extends Model
         // ($related, $foreignKey = null, $localKey = null) bu HASMANY yapısı
     }
 
+    public function subcategory() {
+        return $this->hasMany(Category::class,'cat_ust','id');
+    }
+
     public function sluggable(): array
     {
         return [
