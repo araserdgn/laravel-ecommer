@@ -30,6 +30,7 @@ class Product extends Model
         return $this->hasOne(Category::class,'id','category_id');
         // Category model içindeki İD 'yi , Product model içindeyz bu içerdeki fillable içindeki category_id bagladk
     }
+
     public function sluggable(): array
     {
         return [
@@ -40,3 +41,6 @@ class Product extends Model
         //name alanını slug olarak kullanıyoruz
     }
 }
+
+// hasMany ==> çoklu kategori eklenir, kadın,erkek,cocuk vsvs vs
+// hasOne ==> Product modelinde böyle kulandık cnk sadece 1 tane kategori alabilr

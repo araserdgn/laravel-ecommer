@@ -34,3 +34,6 @@ class Category extends Model
         ];
     }
 }
+
+// hasMany ==> çoklu kategori eklenir, kadın,erkek,cocuk vsvs vs
+// hasOne ==> Product modelinde böyle kulandık cnk sadece 1 tane kategori alabilr

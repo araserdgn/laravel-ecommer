@@ -33,6 +33,10 @@ class PageController extends Controller
 
         // $size = $request->size ?? null;
 
+        $order = $request->order ?? 'id';
+        $short = $request->short ?? 'desc';
+
+
         $products = Product::where('status','1')->select('id','name','slug','size','color','price','category_id','image')
         ->where(function($q) use($size, $color,$startprice,$endprice){
             if(!empty($size)) {
@@ -58,7 +62,7 @@ class PageController extends Controller
         $colors = Product::where('status','1')->groupBy('color')->pluck('color')->toArray();
 
 
-        $products = $products->paginate(1); // get alırsak direkt json olarak alır verileri
+        $products = $products->orderBy($order,$short)->paginate(10); // get alırsak direkt json olarak alır verileri
 
         $categories=Category::where('status','1')->where('cat_ust',null)->withCount('items')->get();
         return view('frontend.pages.products',compact('products','categories','minprice','maxprice','sizelist','colors'));
