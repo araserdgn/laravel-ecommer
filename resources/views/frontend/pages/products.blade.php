@@ -57,6 +57,8 @@
                                             <h3><a href="{{route('urunDetay',$product->slug)}}">{{ $product->name }}</a></h3>
                                             <p class="mb-0">{{ $product->short_text }}</p>
                                             <p class="text-primary font-weight-bold">${{ number_format($product->price,2) }}</p>
+                                            <p><a href="#" class="buy-now btn btn-sm btn-primary">Sepet Ekle</a></p>
+
                                         </div>
                                     </div>
                                 </div>
