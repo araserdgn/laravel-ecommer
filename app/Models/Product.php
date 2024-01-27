@@ -9,8 +9,8 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {
-    use Sluggable;
-
+    use Sluggable,HasFactory;
+    // HasFactory ==> açılan factory dosyasındaki verileri olsturma saglşar
     protected $fillable = [
         'name',
         'slug',
