@@ -24,7 +24,7 @@
                             <li>
                                 <a href="{{ route('sepet') }}" class="site-cart">
                                     <span class="icon icon-shopping_cart"></span>
-                                    <span class="count">{{count(session('cart'))}}</span>
+                                    <span class="count">{{ session()->get('cart') ? count(session('cart')) : 0}}</span>
                                         {{-- Bu sadece ürün basına sayar --}}
 
                                     {{-- <span class="count">{{$totalQty}}</span> --}}

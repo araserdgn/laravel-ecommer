@@ -446,6 +446,7 @@ a {
 
 /* Blocks */
 .site-blocks-cover {
+background-image: url(../images/ana.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center; }
@@ -461,7 +462,7 @@ a {
         font-size: 50px; } }
   .site-blocks-cover p {
     color: #333333;
-    font-size: 20px;
+    font-size: 30px;
     line-height: 35px; }
   .site-blocks-cover .intro-text {
     font-size: 16px;
