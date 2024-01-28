@@ -38,6 +38,7 @@ Route::group(['middleware'=>'sitesetting'], function() {
 
     Route::get('/sepet',[CardController::class, 'basket'])->name('sepet');
     Route::post('/sepet/ekle',[CardController::class, 'add'])->name('sepet.add');
+    Route::post('/sepet/cıkar',[CardController::class, 'remove'])->name('sepet.remove');
 });
 //! Kernel içine tanımladıgımız isimden çekiyoruz sitesetting adını
 // ARtık sitesetting içine yazılan bütün kodlar içerisindeki kodları etkiler

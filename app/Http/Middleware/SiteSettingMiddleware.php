@@ -22,7 +22,13 @@ class SiteSettingMiddleware
 
         $categories=Category::where('status','1')->with('subcategory')->withCount('items')->get();
 
-        view()->share(['settings'=>$settings,'categories'=>$categories]);
+        $cardItem = session('cart',[]);
+        $totalQty=0;
+        foreach ($cardItem as $card) {
+            $totalQty += $card['qty'];
+        }
+
+        view()->share(['settings'=>$settings,'categories'=>$categories, 'totalQty'=>$totalQty]);
         // view , göster ve share ile paylaş. Yani bladeler ile yaplas komutudur
         return $next($request);
     }

@@ -24,7 +24,12 @@
                             <li>
                                 <a href="{{ route('sepet') }}" class="site-cart">
                                     <span class="icon icon-shopping_cart"></span>
-                                    <span class="count">2</span>
+                                    <span class="count">{{count(session('cart'))}}</span>
+                                        {{-- Bu sadece ürün basına sayar --}}
+
+                                    {{-- <span class="count">{{$totalQty}}</span> --}}
+                                    {{-- direkt ürünün adetini de sepette sayar --}}
+
                                 </a>
                             </li>
                             <li class="d-inline-block d-md-none ml-md-0"><a href="#"
