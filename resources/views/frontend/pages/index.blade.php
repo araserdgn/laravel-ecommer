@@ -10,7 +10,7 @@
                     <div class="intro-text text-center text-md-left">
                         <p class="mb-4">{{ $slider->content ?? '' }} </p>
                         <p>
-                            <a href="{{route('urunler')}}" class="btn btn-sm btn-primary">Ürünlerimiz</a>
+                            <a href="{{route('products')}}" class="btn btn-sm btn-primary">Ürünlerimiz</a>
                         </p>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                     @foreach ($category as $categor)
 
                     <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-                        <a class="block-2-item" href="{{ route('kadinurunler') }}">
+                        <a class="block-2-item" href="{{ route('kadinproducts') }}">
                             <figure class="image">
                                 <img src="{{asset($categor->image)}}" alt="" class="img-fluid">
                             </figure>
@@ -171,7 +171,7 @@
                     <div class="col-md-12 col-lg-5 text-center pl-md-5">
                         <h2>Ürünlerimizde Çılgınca %50 İndirim</h2>
                         <p>İndirimdeki ürünleri sakın ama sakın kaçırma!</p>
-                        <p><a href="{{ route('indirimurunler') }}" class="btn btn-primary btn-sm">İndirimli Ürünler</a>
+                        <p><a href="{{ route('indirimproducts') }}" class="btn btn-primary btn-sm">İndirimli Ürünler</a>
                         </p>
                     </div>
                 </div>

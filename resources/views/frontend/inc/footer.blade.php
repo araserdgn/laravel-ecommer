@@ -8,12 +8,12 @@
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <ul class="list-unstyled">
-                            <li class="active"><a href="{{ route('anasayfa') }}">Ana Sayfa</a></li>
+                            <li class="active"><a href="{{ route('home') }}">Ana Sayfa</a></li>
                             <li>
-                                <a href="{{ route('hakkimizda') }}">Hakkımızda</a>
+                                <a href="{{ route('about') }}">Hakkımızda</a>
                             </li>
-                            <li><a href="{{ route('urunler') }}">Ürünler</a></li>
-                            <li><a href="{{ route('iletisim') }}">İletisim</a></li>
+                            <li><a href="{{ route('products') }}">Ürünler</a></li>
+                            <li><a href="{{ route('contact') }}">İletisim</a></li>
                         </ul>
                     </div>
                 </div>

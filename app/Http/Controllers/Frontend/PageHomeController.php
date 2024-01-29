@@ -12,7 +12,7 @@ use App\Models\Slider;
 
 class PageHomeController extends Controller
 {
-    public function anasayfa() {
+    public function home() {
         $slider = Slider::where('status','1')->first();
         $title="Anasayfa";
 

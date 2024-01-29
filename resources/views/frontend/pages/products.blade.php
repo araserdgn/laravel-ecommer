@@ -4,7 +4,7 @@
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 mb-0"><a href="{{ route('anasayfa') }}">Home</a> <span class="mx-2 mb-0">/</span> <strong
+                <div class="col-md-12 mb-0"><a href="{{ route('home') }}">Home</a> <span class="mx-2 mb-0">/</span> <strong
                         class="text-black">Shop</strong></div>
             </div>
         </div>
@@ -110,7 +110,7 @@
                             @if (!empty($categories) && $categories->count()>0)
                                 @foreach ($categories->where('cat_ust',null) as $category)
 
-                                <li class="mb-1"><a href="{{route($category->slug.'urunler')}}" class="d-flex"><span>{{$category->name}}</span> <span
+                                <li class="mb-1"><a href="{{route($category->slug.'products')}}" class="d-flex"><span>{{$category->name}}</span> <span
                                             class="text-black ml-auto">({{$category->items_count}})</span>
                                         </a></li>
                                 @endforeach
@@ -178,7 +178,7 @@
                                 @foreach ($allcategories->where('cat_ust',null) as $category)
 
                                 <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-                                    <a class="block-2-item" href="{{route($category->slug.'urunler')}}">
+                                    <a class="block-2-item" href="{{route($category->slug.'products')}}">
                                         <figure class="image">
                                             <img src="{{asset($category->image)}}" alt="" class="img-fluid">
                                         </figure>

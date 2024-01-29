@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function urunler(Request $request, $slug=null) {
+    public function products(Request $request, $slug=null) {
 
         $category= $request->segment(1) ?? null;
 
@@ -78,7 +78,7 @@ class PageController extends Controller
         return view('frontend.pages.products',compact('products','minprice','maxprice','sizelist','colors'));
     }
 
-    public function indirimurunler() {
+    public function discountproducts() {
         return view('frontend.pages.products');
     }
 
@@ -96,12 +96,12 @@ class PageController extends Controller
         return view('frontend.pages.product',compact('product','products'));
     }
 
-    public function hakkimizda() {
+    public function about() {
        $about = About::where('id',1)->first();
         return view('frontend.pages.about', compact('about'));
     }
 
-    public function iletisim() {
+    public function contact() {
         return view('frontend.pages.contact');
     }
 
