@@ -5,9 +5,9 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Basic form elements</h4>
+                    <h4 class="card-title text-center">Basic form elements</h4>
                     <p class="card-description">
-                        Basic form elements
+
                     </p>
                     <form class="forms-sample">
                         <div class="form-group">
