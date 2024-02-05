@@ -17,6 +17,7 @@ Route::group(['middleware'=>['panelsetting'], 'prefix'=>'panel','as'=>'panel.'],
     // Burda make:controller --resource ile olsutrdysan direkt sınıfları oto tanımayı saglar
 
     Route::get('/slider/ekle', [SliderController::class, 'create'])->name('slider.create');
+    Route::post('/slider/ekle', [SliderController::class, 'create'])->name('slider.create');
     Route::get('/slider/{id}/edit', [SliderController::class, 'edit'])->name('slider.edit');
     Route::post('/slider/store', [SliderController::class, 'store'])->name('slider.store');
     Route::put('/slider/{id}/update', [SliderController::class, 'update'])->name('slider.update');

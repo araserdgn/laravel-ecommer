@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SliderRequest;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -28,9 +29,16 @@ class SliderController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SliderRequest $request)
     {
-        //
+        Slider::create( [
+            'name' => $request->name,
+            'link' => $request->link,
+            'content' => $request->content,
+            'status' => $request->status,
+
+        ]);
+        return back()->withSuccess('Başarı ile oluşturuldu.');
     }
 
     /**

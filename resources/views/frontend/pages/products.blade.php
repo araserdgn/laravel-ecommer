@@ -111,7 +111,7 @@
                                 @foreach ($categories->where('cat_ust',null) as $category)
 
                                 <li class="mb-1"><a href="{{route($category->slug.'products')}}" class="d-flex"><span>{{$category->name}}</span> <span
-                                            class="text-black ml-auto">({{$category->items_count}})</span>
+                                            class="text-black ml-auto">({{$category->getTotalProductCount()}})</span>
                                         </a></li>
                                 @endforeach
                             @endif
@@ -132,7 +132,7 @@
                                 @foreach ($sizelist as $size)
 
                                     <label for="s_sm" class="d-flex">
-                                        <input type="checkbox" id="s_sm" class="mr-2 mt-1"> <span class="text-black">{{$size}}
+                                        <input type="checkbox" id="" class="mr-2 mt-1"> <span class="text-black">{{$size}}
                                             </span>
                                     </label>
 

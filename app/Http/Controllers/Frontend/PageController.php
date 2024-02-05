@@ -72,7 +72,7 @@ class PageController extends Controller
         $colors = Product::where('status','1')->groupBy('color')->pluck('color')->toArray();
 
 
-        $products = $products->orderBy($order,$sort)->paginate(20); // get alırsak direkt json olarak alır verileri
+       $products = $products->orderBy($order,$sort)->paginate(20); // get alırsak direkt json olarak alır verileri
 
 
         return view('frontend.pages.products',compact('products','minprice','maxprice','sizelist','colors'));
